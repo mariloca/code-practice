@@ -41,6 +41,11 @@ def minValueRecursive(root):
         return root.val
     return minValueRecursive(root.left)
 
+def maxValue(root):
+    while root.right:
+        root=root.right
+    return root.val
+
 #inorder print tree
 def printTree(root):
     if root==None:return
@@ -78,16 +83,45 @@ def mirror(root):
     mirror(root.right)
 
 def doubleTree(root):
-    if root==None: return False
-    '''
-    if root.left:
-        newlchild=Node(root.val)
-        oldlchild=Node(root.left.val)
-        print('newlchild',newlchild.val,'oldlchild',oldlchild.val)
-    '''
-    print(root.val)
-    doubleTree(root.left)
-    doubleTree(root.right)
+    if root==None: return
+    #creat a copy of current node
+    newleft=Node(root.val)
+    #save lchild and rchild of current node
+    oldleft=root.left
+    oldright=root.right
+    #make old left child to new node's left
+    newleft.left=oldleft
+    #make new node to current lchild
+    root.left=newleft
+    #use old children in the recursive to avoid maximum recursion depth exceeded
+    doubleTree(oldleft)
+    doubleTree(oldright)
+
+def sameTree(root1,root2):
+    if root1==None or root2==None or root1.val!=root2.val:
+        return False
+    else:
+        return True
+    return sameTree(root1.left,root2.left) and sameTree(root1.right,root2.right)
+
+def countTrees(n):
+    #base case
+    if n==0 or n==1: return 1
+    count=0
+    for i in range(1,n+1):
+        count+=countTrees(i-1)*countTrees(n-i)
+    return count
+
+def isBST(root):
+    if root==None:return True
+    maxV=float('inf')
+    minV=float('-inf')
+    return isBSThelper(root,minV,maxV)
+def isBSThelper(root,min,max):
+    if root==None: return True
+    if root.val<=min or root.val>=max:
+        return False
+    return isBSThelper(root.left, min,root.val) and isBSThelper(root.right,root.val,max)
 
 #build a tree
 root = Node(11)
@@ -98,6 +132,18 @@ root=insert(root,9)
 root=insert(root,12)
 root=insert(root,20)
 
+root2=Node(12)
+root2=insert(root2,7)
+root2=insert(root2,8)
+
+
+root3 = Node(11)
+root3=insert(root3,8)
+root3=insert(root3,19)
+root3=insert(root3,4)
+root3=insert(root3,9)
+root3=insert(root3,12)
+root3=insert(root3,20)
 '''
 print('size of the tree', size(root))
 print('max depth of the tree', maxDepth(root))
@@ -106,9 +152,14 @@ printTree(root)
 printPostorder(root)
 result=hasPathSum(root,23)
 print(result)
-
 mirror(root)
 printTree(root)
-'''
 doubleTree(root)
 printTree(root)
+result=sameTree(root,root2)
+print(result)
+res=countTrees(10)
+print(res)
+print('max value of the tree', maxValue(root))
+'''
+print('is BST', isBST(root2))
