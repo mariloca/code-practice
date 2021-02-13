@@ -112,6 +112,12 @@ def countTrees(n):
         count+=countTrees(i-1)*countTrees(n-i)
     return count
 
+'''
+Parent to lchild: pass parent.val as new max
+Parent to rchild: pass parent.val as new min
+lchild to parent: pass lchild.val as new min
+rchild to parent: pass rchild.val as new max 
+'''
 def isBST(root):
     if root==None:return True
     maxV=float('inf')
