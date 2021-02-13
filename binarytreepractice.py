@@ -79,18 +79,13 @@ def mirror(root):
 
 def doubleTree(root):
     if root==None: return False
-    newlchild=Node(root.val)
-        #newlchild will be current root.left
-        #oldlchild will be newlchild.left
+    '''
     if root.left:
-        oldlchild=root.left
-        newlchild.left=oldlchild
-        root.left=newlchild
-        #print('newlchild',newlchild.val,'oldlchild',oldlchild.val)
-        #print('root', root.val)
-    else:
-        root.left=newlchild
-
+        newlchild=Node(root.val)
+        oldlchild=Node(root.left.val)
+        print('newlchild',newlchild.val,'oldlchild',oldlchild.val)
+    '''
+    print(root.val)
     doubleTree(root.left)
     doubleTree(root.right)
 
