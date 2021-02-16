@@ -70,8 +70,22 @@ def hasPathSum(root, sum):
     #check either left or right child of the root
     return hasPathSum(root.left,sum) or hasPathSum(root.right,sum)
 
-#8
+def printPaths(root):
+    path=[0]*100
+    printPathsHelper(root,path,0)
 
+def printPathsHelper(root,path,pathlen):
+    if root==None:return
+    path[pathlen]=root.val
+    pathlen +=1
+    #reach leaf node, then print the entire array
+    if root.left==None and root.right==None:
+        for i in range(0,pathlen):
+            print(path[i])
+        #print('\n')
+    #continue try left and right subtrees
+    printPathsHelper(root.left,path,pathlen)
+    printPathsHelper(root.right,path,pathlen)
 
 
 def mirror(root):
@@ -116,7 +130,7 @@ def countTrees(n):
 Parent to lchild: pass parent.val as new max
 Parent to rchild: pass parent.val as new min
 lchild to parent: pass lchild.val as new min
-rchild to parent: pass rchild.val as new max 
+rchild to parent: pass rchild.val as new max
 '''
 def isBST(root):
     if root==None:return True
@@ -167,5 +181,6 @@ print(result)
 res=countTrees(10)
 print(res)
 print('max value of the tree', maxValue(root))
-'''
 print('is BST', isBST(root2))
+'''
+printPaths(root)
