@@ -71,6 +71,7 @@ def hasPathSum(root, sum):
     return hasPathSum(root.left,sum) or hasPathSum(root.right,sum)
 
 #8
+def printPaths(root):
 
 
 
@@ -116,7 +117,7 @@ def countTrees(n):
 Parent to lchild: pass parent.val as new max
 Parent to rchild: pass parent.val as new min
 lchild to parent: pass lchild.val as new min
-rchild to parent: pass rchild.val as new max 
+rchild to parent: pass rchild.val as new max
 '''
 def isBST(root):
     if root==None:return True
