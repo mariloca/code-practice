@@ -4,6 +4,11 @@ import csv
 from matplotlib import pyplot as plt
 from datetime import datetime
 
+'''
+datetime module
+strptime(): interpret the date. Convert a string to a datetime format. 
+			Second argument tells Python how the date is formatted.
+'''
 filename='sitka_weather_07-2014.csv'
 with open(filename) as f:
 	reader=csv.reader(f)
@@ -36,12 +41,12 @@ with open(filename) as f:
 
 #plot data
 fig=plt.figure(dpi=128,figsize=(10,6))
-plt.plot(dates,highs,c='red')
+plt.plot(dates,highs,c='red') #plot the points in red
 
 #format plot
 plt.title("Daily high temperatures, July 2014", fontsize=24)
 plt.xlabel('',fontsize=16)
-fig.autofmt_xdate()
+fig.autofmt_xdate() #draws the date labels diagonally to prevent them from overlapping.
 plt.ylabel("Temperature(F)", fontsize=16)
 plt.tick_params(axis='both', which='major', labelsize=16)
 
