@@ -1,7 +1,7 @@
 
 import csv
 
-from matplotlib import pyplot as plt 
+from matplotlib import pyplot as plt
 from datetime import datetime
 
 filename='sitka_weather_07-2014.csv'
@@ -16,14 +16,14 @@ with open(filename) as f:
 	#Print each row of the csv reader object
 	#for row in reader:
 	#	print(row)
-	
+
 
 	'''
 	Get dates and high temperatures from file.
 
 	The reader object continues from where it left off in the CSV file
 	and automatically returns each line following its current position.
-	next()has already read the header row, 
+	next()has already read the header row,
 	so the loop will begin at the second line where the actual data begins.
 	'''
 	dates,highs=[],[]
@@ -33,7 +33,7 @@ with open(filename) as f:
 
 		high=int(row[1])
 		highs.append(high)
-	
+
 #plot data
 fig=plt.figure(dpi=128,figsize=(10,6))
 plt.plot(dates,highs,c='red')
@@ -46,3 +46,5 @@ plt.ylabel("Temperature(F)", fontsize=16)
 plt.tick_params(axis='both', which='major', labelsize=16)
 
 plt.show()
+
+#comment
