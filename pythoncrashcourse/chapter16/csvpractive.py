@@ -1,9 +1,7 @@
 
 import csv
-
 from matplotlib import pyplot as plt
 from datetime import datetime
-
 '''
 datetime module
 strptime(): interpret the date. Convert a string to a datetime format. 
@@ -24,7 +22,7 @@ with open(filename) as f:
 	#Print each row of the csv reader object
 	#for row in reader:
 	#	print(row)
-
+	
 
 	'''
 	Get dates, high, and low temperatures from file.
