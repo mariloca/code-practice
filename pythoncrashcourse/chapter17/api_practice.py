@@ -24,7 +24,9 @@ for repo_dict in repo_dicts:
 	description=repo_dict['description']
 	if not description:
 		description="No description provided."
-	plot_dict = {'value': repo_dict['stargazers_count'], 'label':description,} #value to determine bar height, label to create tooltip for each bar.
+	plot_dict = {'value': repo_dict['stargazers_count'], #value to determine bar height, label to create tooltip for each bar.
+				'label':description,#label to create tooltip for each bar
+				'xlink': repo_dict['html_url']} #add clickable links
 	plot_dicts.append(plot_dict)
 
 #Make visualization
